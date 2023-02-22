@@ -1,9 +1,9 @@
 [package]
 name = "rustyshell"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["SCP-049"]
 edition = "2021"
-description = "A terminal written in rust! Made as a fun project to learn more about the language"
+description = "A Shell written in rust! Made as a fun project to learn more about the language!"
 readme = "README.md"
 license = "BSL-1.0"
 publish = false
@@ -14,4 +14,4 @@ publish = false
 indicatif = "0.17.3"
 colored = "2.0.0"
 clearscreen = "2.0.0"
-inquire = { version = "0.5.3", features = ["date", "editor"] }
+inquire = "0.5.3"
