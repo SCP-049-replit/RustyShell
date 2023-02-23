@@ -21,7 +21,7 @@ Unlike the PyLine Terminal, installing dependencies is easy thanks to rusts Carg
 
 1. Install Rust: Visit [rust.org](https://www.rust-lang.org/tools/install) to find out how to install! (Make sure to install everythin!)
 
-2. Install the RustyShell: ``
+2. Install the RustyShell: `git clone https://github.com/SCP-049-replit/RustyShell.git`
 
 3. Type `cd RustyShell`
 
