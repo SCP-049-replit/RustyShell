@@ -1,6 +1,6 @@
 [package]
 name = "rustyshell"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["SCP-049"]
 edition = "2021"
 description = "A Shell written in rust! Made as a fun project to learn more about the language!"

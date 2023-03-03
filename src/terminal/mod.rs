@@ -1,4 +1,4 @@
-// Imports
+ // Imports
 use crate::terminal::c::*;
 use colored::Colorize;
 use inquire::*;
@@ -42,12 +42,14 @@ pub fn run() {
 fn suggestions(val: &str) -> Result<Vec<String>, CustomUserError> {
     let options = [
         "shell.help",
+        "shell.exec",
         "shell.name",
         "shell.refresh",
         "shell.quit",
         "file.list",
         "file.create",
         "file.edit",
+        "file.exec",
         "file.delete",
     ];
 
@@ -64,6 +66,8 @@ fn suggestions(val: &str) -> Result<Vec<String>, CustomUserError> {
 fn exec(cmd: String) {
     if cmd == "shell.help" {
         shell_help();
+    } else if cmd == "shell.exec" {
+        shell_exec();
     } else if cmd == "shell.name" {
         shell_name();
     } else if cmd == "shell.refresh" {
@@ -76,6 +80,8 @@ fn exec(cmd: String) {
         file_create();
     } else if cmd == "file.edit" {
         file_edit();
+    } else if cmd == "file.exec" {
+        file_exec();
     } else if cmd == "file.delete" {
         file_delete();
     } else {

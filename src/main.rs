@@ -8,7 +8,7 @@ use clearscreen;
 fn main() {
     clearscreen::clear().expect("failed to clear screen");
     println!("RustyShell");
-    println!("Version: 0.0.1");
+    println!("Version: 0.0.2");
     println!("Booting...");
     
     let bar = ProgressBar::new(100000);
@@ -16,7 +16,7 @@ fn main() {
         bar.inc(1);
 
         // Saves files to variables
-        let license = Path::new("./readme/LICENSE.md").exists();
+        let license = Path::new("./README/LICENSE.md").exists();
         let mod_rs = Path::new("./src/terminal/mod.rs").exists();
         let c_rs = Path::new("./src/terminal/mod.rs").exists();
 

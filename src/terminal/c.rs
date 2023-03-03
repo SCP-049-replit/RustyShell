@@ -5,6 +5,7 @@ pub fn shell_help() {
     println!("
 Commands:
     shell.help        displays help menu
+    shell.exec        lets user run linux
     shell.name        changes username
     shell.refresh     refreshes the shell
     shell.quit        ends the shell session
@@ -12,7 +13,33 @@ Commands:
     file.list         lists all files
     file.make         creates a file
     file.edit         edit a file
+    file.exec         runs a rust file
     file.delete       deletes a file");
+}
+
+// Enters user into linux mode; shell.exec
+pub fn shell_exec() {
+    #![allow(unused)]
+    
+    use std::process::Command;
+    use std::{thread, time};
+    use std::io;
+
+    let mut cmd = String::new();
+
+    println!("{}", format!("Enter Linux command:").blue());
+    io::stdin()
+        .read_line(&mut cmd)
+        .expect("Failed to read line");
+    println!();
+    
+    thread::spawn(|| {
+        std::process::Command::new("sh")
+            .arg("-c")
+            .arg(cmd)
+            .spawn();
+    });
+    thread::sleep(time::Duration::from_millis(10));
 }
 
 // Changes username for the CLI; shell.name
@@ -24,7 +51,8 @@ pub fn shell_name() {
     
     let mut file = std::fs::File::create("./src/name.txt").expect(&format!("err: File creation failed").red().bold());
     let mut new_name = String::new();
-    
+
+    println!("{}", format!("Enter new name:").blue());
     io::stdin()
         .read_line(&mut new_name)
         .expect("Failed to read line");
@@ -63,6 +91,7 @@ pub fn file_create() {
     use std::io;
 
     let mut filename = String::new();
+    println!("{}", format!("Enter file name:").blue());
     io::stdin()
         .read_line(&mut filename);
     let mut filename = String::from("./userfiles/") + filename.as_str();
@@ -74,7 +103,24 @@ pub fn file_create() {
 
 // Lets the user edit a file; file.edit
 pub fn file_edit() {
-    
+    #![allow(unused)]
+    use std::process::Command;
+    use std::{thread, time};
+    use std::io;
+
+    let mut filename = String::new();
+    println!("{}", format!("Enter file name:").blue());
+    io::stdin()
+        .read_line(&mut filename);
+    let mut filename = String::from("./userfiles/") + filename.as_str();
+
+    thread::spawn(move || {
+    std::process::Command::new("sh")
+        .arg("-c")
+        .arg("kiro")
+        .arg(filename.as_str())
+        .spawn();
+    });
 }
 
 // Deletes a file; file.delete
@@ -85,6 +131,7 @@ pub fn file_delete() {
     use std::io;
 
     let mut filename = String::new();
+    println!("{}", format!("Enter file name:").blue());
     io::stdin()
         .read_line(&mut filename);
     let mut filename = String::from("./userfiles/") + filename.as_str();
@@ -94,4 +141,40 @@ pub fn file_delete() {
 
     println!();
     print!("File deleted: {}", filename);
+}
+
+// Compiles and runs a rust file; file.exec
+pub fn file_exec() {
+    #![allow(unused)]
+    
+    use std::process::Command;
+    use std::{thread, time};
+    use std::io;
+
+    let mut path = String::new();
+    let mut executable = String::new();
+
+    println!("{}", format!("Enter file name:").blue());
+    io::stdin()
+        .read_line(&mut path)
+        .expect("Failed to read line");
+    let compile = String::from("rustc ./userfiles/") + &path;
+        println!("{}", format!("Enter executable name:").blue());
+        io::stdin()
+            .read_line(&mut executable)
+            .expect("Failed to read line");
+    
+    thread::spawn(move || {
+        std::process::Command::new("sh")
+            .arg("-c")
+            .arg(compile.as_str())
+            .spawn();
+        thread::sleep(time::Duration::from_secs(5));
+        let executable = String::from("./") + executable.as_str();
+        std::process::Command::new("sh")
+            .arg("-c")
+            .arg(executable.as_str())
+            .spawn();
+    });
+    thread::sleep(time::Duration::from_secs(10));
 }
