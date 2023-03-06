@@ -39,6 +39,7 @@ Below are tables of every command, with their description.
 | shell.help | Displays a list of commands in the shell|
 | shell.exec | Lets the user enter a linux command, and runs it |
 | shell.name | Edit the name of the user in the shell |
+| shell.time | Prints out the time and date in your area
 | shell.refresh | Clears the shell and reprints the welcome message |
 | shell.quit | Stops the shell and returns you to the terminal |
 
@@ -60,6 +61,7 @@ This section is a personal checklist so I can keep track of what to do (and for 
 
 - [x] Add file managment
 - [x] Add linux command prompt
+- [x] Add date and time command
 - [ ] Add text editor/file executing
 - [x] Create Github repository
 

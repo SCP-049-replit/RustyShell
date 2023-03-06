@@ -44,6 +44,7 @@ fn suggestions(val: &str) -> Result<Vec<String>, CustomUserError> {
         "shell.help",
         "shell.exec",
         "shell.name",
+        "shell.time",
         "shell.refresh",
         "shell.quit",
         "file.list",
@@ -70,6 +71,8 @@ fn exec(cmd: String) {
         shell_exec();
     } else if cmd == "shell.name" {
         shell_name();
+    } else if cmd == "shell.time" {
+        shell_time();
     } else if cmd == "shell.refresh" {
         shell_refresh();
     } else if cmd == "shell.quit" {

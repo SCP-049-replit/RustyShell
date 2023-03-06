@@ -11,9 +11,6 @@ packageSearch = true
 [nix]
 channel = "stable-22_11"
 
-[gitHubImport]
-requiredFiles = [".replit", "replit.nix"]
-
 [languages]
 
 [languages.rust]

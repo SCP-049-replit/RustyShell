@@ -32,9 +32,9 @@ fn main() {
         }
     }
     bar.finish();
-    
+
     clearscreen::clear().expect("failed to clear screen");
-    println!("{}", "Welcome to the RustyShell".green());
+    println!("{}", "Welcome to the RustyShell!".green());
     println!("{}", "Type `shell.help` to see commands".green());
     println!("");
     run();

@@ -7,6 +7,7 @@ Commands:
     shell.help        displays help menu
     shell.exec        lets user run linux
     shell.name        changes username
+    shell.time        displays the time
     shell.refresh     refreshes the shell
     shell.quit        ends the shell session
     
@@ -58,6 +59,21 @@ pub fn shell_name() {
         .expect("Failed to read line");
     
     file.write_all(new_name.trim().as_bytes());
+}
+
+// Shows current date and time; shell.time
+pub fn shell_time() {
+    #![allow(unused)];
+    use std::{thread, time};
+
+    println!();
+    thread::spawn(move || {
+        std::process::Command::new("sh")
+            .arg("-c")
+            .arg("date")
+            .spawn();
+    });
+    thread::sleep(time::Duration::from_millis(10));
 }
 
 // Refreshes the CLI; shell.refresh
@@ -114,13 +130,11 @@ pub fn file_edit() {
         .read_line(&mut filename);
     let mut filename = String::from("./userfiles/") + filename.as_str();
 
-    thread::spawn(move || {
     std::process::Command::new("sh")
         .arg("-c")
         .arg("kiro")
         .arg(filename.as_str())
         .spawn();
-    });
 }
 
 // Deletes a file; file.delete
