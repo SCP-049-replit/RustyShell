@@ -1,6 +1,7 @@
 { pkgs }: {
 	deps = [
-		pkgs.rustc
+		pkgs.nano
+  pkgs.rustc
 		pkgs.rustfmt
 		pkgs.cargo
 		pkgs.cargo-edit

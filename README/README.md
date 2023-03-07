@@ -49,7 +49,7 @@ Below are tables of every command, with their description.
 | ----------- | ----------- |
 | file.list | Lists all files found in the `./userfiles` directory |
 | file.make | Creates a file named by user in the `./userfiles` directory |
-| file.edit | Opens a text editor on the file stated by the user |
+| file.edit | Opens the nano text editor on the requested file|
 | file.exec | Compiles then runs a rust file's binary |
 | file.delete | Deletes a file in the `./userfiles` directory |
 
@@ -62,7 +62,7 @@ This section is a personal checklist so I can keep track of what to do (and for 
 - [x] Add file managment
 - [x] Add linux command prompt
 - [x] Add date and time command
-- [ ] Add text editor/file executing
+- [x] Add text editor/file executing
 - [x] Create Github repository
 
 ### Version 0.0.1

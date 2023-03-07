@@ -1,6 +1,5 @@
 use indicatif::ProgressBar;
 use crate::terminal::*;
-use colored::Colorize;
 use std::path::Path;
 pub mod terminal;
 use clearscreen;
@@ -32,10 +31,6 @@ fn main() {
         }
     }
     bar.finish();
-
-    clearscreen::clear().expect("failed to clear screen");
-    println!("{}", "Welcome to the RustyShell!".green());
-    println!("{}", "Type `shell.help` to see commands".green());
-    println!("");
+    print_message();
     run();
 }

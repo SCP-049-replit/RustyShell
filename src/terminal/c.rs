@@ -13,7 +13,7 @@ Commands:
     
     file.list         lists all files
     file.make         creates a file
-    file.edit         edit a file
+    file.edit         opens nano text editor
     file.exec         runs a rust file
     file.delete       deletes a file");
 }
@@ -78,13 +78,18 @@ pub fn shell_time() {
 
 // Refreshes the CLI; shell.refresh
 pub fn shell_refresh() {
-    use crate::main;
-    main();
+    use crate::print_message;
+    print_message();
 }
 
 // Ends shell session; shell.quit
 pub fn shell_quit() {
-    panic!("Shell session terminated");
+    println!();
+    println!("{}", format!("Shell session terminated").red());
+    println!();
+    
+    use std::process::exit;
+    exit(0);
 }
 
 // Lists files in the userfiles directory; file.list
@@ -128,13 +133,15 @@ pub fn file_edit() {
     println!("{}", format!("Enter file name:").blue());
     io::stdin()
         .read_line(&mut filename);
-    let mut filename = String::from("./userfiles/") + filename.as_str();
+    let mut filename = String::from("nano ./userfiles/") + filename.as_str();
 
-    std::process::Command::new("sh")
-        .arg("-c")
-        .arg("kiro")
-        .arg(filename.as_str())
-        .spawn();
+    thread::spawn(move || {
+        std::process::Command::new("sh")
+            .arg("-c")
+            .arg(filename.as_str())
+            .spawn();
+        thread::park();
+    });
 }
 
 // Deletes a file; file.delete

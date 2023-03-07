@@ -1,4 +1,4 @@
- // Imports
+// Imports
 use crate::terminal::c::*;
 use colored::Colorize;
 use inquire::*;
@@ -7,6 +7,13 @@ mod c;
 
 struct Config {
     autocomplete: bool,
+}
+
+pub fn print_message() { 
+    clearscreen::clear().expect("failed to clear screen");
+    println!("{}", "Welcome to the RustyShell!".green());
+    println!("{}", "Type `shell.help` to see commands".green());
+    println!("");
 }
 
 // Runs the terminal
