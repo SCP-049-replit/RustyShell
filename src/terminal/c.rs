@@ -105,7 +105,7 @@ pub fn file_list() {
 }
 
 // Creates a file in userfiles; file.make
-pub fn file_create() {
+pub fn file_make() {
     #![allow(unused)]
     
     use std::fs::File;

@@ -55,7 +55,7 @@ fn suggestions(val: &str) -> Result<Vec<String>, CustomUserError> {
         "shell.refresh",
         "shell.quit",
         "file.list",
-        "file.create",
+        "file.make",
         "file.edit",
         "file.exec",
         "file.delete",
@@ -86,8 +86,8 @@ fn exec(cmd: String) {
         shell_quit();
     } else if cmd == "file.list" {
         file_list();
-    } else if cmd == "file.create" {
-        file_create();
+    } else if cmd == "file.make" {
+        file_make();
     } else if cmd == "file.edit" {
         file_edit();
     } else if cmd == "file.exec" {
